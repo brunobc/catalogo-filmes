@@ -25,3 +25,11 @@ exports.deleta = function(req, res) {
     res.send('Filme ' + filme.titulo + ' removido com sucesso');
   });
 };
+
+exports.atualiza = function(req, res) {
+  var id = req.body._id;
+  delete req.body._id;
+  Filme.findByIdAndUpdate(id, req.body, function(err, filme) {
+    res.send('Filme ' + filme.titulo + ' atualizado com sucesso!');
+  });
+};

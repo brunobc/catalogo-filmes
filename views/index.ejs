@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app>
+<html ng-app="catalogo">
 <head>
   <meta charset="UTF-8">
   <title>Bem-vindo</title>
@@ -22,6 +22,9 @@
       <a href="#" ng-click="deletaFilme(filmeSelecionado)">
         Deletar {{filmeSelecionado.titulo}}
       </a>
+      <a href="#" ng-click="editaFilme(filmeSelecionado)">
+        Editar filme {{filmeSelecionado.titulo}}
+      </a>
     </dl>
   </div>
 
@@ -33,6 +36,7 @@
   </form>
 
   <script src="js/angular.js"></script>
+  <script src="js/main.js"></script>
   <script src="js/FilmesController.js"></script>
 </body>
 </html>

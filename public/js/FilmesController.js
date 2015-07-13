@@ -1,6 +1,6 @@
-function FilmesController($http, $scope) {
-  $http.get('/lista')
-  .success(function(retorno){
+angular.module('catalogo')
+.controller('FilmesController', function($http, $scope) {
+  $http.get('/lista').success(function(retorno){
     $scope.filmes = retorno.filmes;
   });
 
@@ -20,6 +20,20 @@ function FilmesController($http, $scope) {
     });
   };
 
+  $scope.enviaFilme = function() {
+    if($scope.filme._id) {
+      atualizaFilme();
+    } else {
+      adicionaFilme();
+    }
+  };
+  var atualizaFilme = function() {
+    $http.put('/filme', $scope.filme)
+    .success(function() {
+      $scope.filme = new Filme();
+    });
+  };
+
   $scope.mostraFilme= function(filme) {
     $scope.filmeSelecionado = filme;
   };
@@ -32,4 +46,8 @@ function FilmesController($http, $scope) {
     });
   };
 
-}
+  $scope.editaFilme = function(filme) {
+    $scope.filme = filme;
+  };
+
+});
